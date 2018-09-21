@@ -61,11 +61,3 @@ class SoccerRank
     end
   end
 end
-
-
-if ARGV.length > 0
-  rank = SoccerRank.new
-  rank.action(ARGV[0])
-else
-  puts 'please restart program with parameter(path to file)'
-end
