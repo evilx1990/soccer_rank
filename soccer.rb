@@ -12,7 +12,7 @@ class SoccerRank
       if File.exist?(filename)
         file = File.open(filename)
         file.readlines.each { |line| @arr << line.chomp }
-
+        file.close
         create_table!
         rank_calc
         show_table
@@ -43,9 +43,12 @@ class SoccerRank
     unless @arr.empty?
       @arr.each do |str|
         tmp_arr = str.split(', ')
-        if tmp_arr[0][COUNT] > tmp_arr[1][COUNT]
+        count1 = tmp_arr[0][COUNT]
+        count2 = tmp_arr[1][COUNT]
+
+        if count1 > count2
           @table[tmp_arr[0][TEAM].chomp(' ')] += 3
-        elsif tmp_arr[0][COUNT] < tmp_arr[1][COUNT]
+        elsif count1 < count2
           @table[tmp_arr[1][TEAM].chomp(' ')] += 3
         else
           @table[tmp_arr[0][TEAM].chomp(' ')] += 1
@@ -54,6 +57,7 @@ class SoccerRank
       end
     end
   end
+
 end
 
 
