@@ -27,8 +27,8 @@ class SoccerRank
 
   def show_table
     @table = @table.sort_by { |_key, val| val }.reverse.to_h
-
-    @table.each { |k, v| puts "#{i =+ 1}. #{k}, #{v} pts" }
+    i = 0
+    @table.each { |k, v| puts "#{i += 1}. #{k}, #{v} pts" }
   end
 
   def create_table!
@@ -43,21 +43,23 @@ class SoccerRank
     unless @arr.empty?
       @arr.each do |str|
         tmp_arr = str.split(', ')
+
         count1 = tmp_arr[0][COUNT]
         count2 = tmp_arr[1][COUNT]
+        team1 = tmp_arr[0][TEAM].chomp(' ')
+        team2 = tmp_arr[1][TEAM].chomp(' ')
 
         if count1 > count2
-          @table[tmp_arr[0][TEAM].chomp(' ')] += 3
+          @table[team1] += 3
         elsif count1 < count2
-          @table[tmp_arr[1][TEAM].chomp(' ')] += 3
+          @table[team2] += 3
         else
-          @table[tmp_arr[0][TEAM].chomp(' ')] += 1
-          @table[tmp_arr[1][TEAM].chomp(' ')] += 1
+          @table[team1] += 1
+          @table[team2] += 1
         end
       end
     end
   end
-
 end
 
 
