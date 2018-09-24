@@ -48,7 +48,7 @@ class SoccerRank
 
   def show_table
     @table = @table.sort_by { |key, _val| key }.reverse.to_h # Сортируем по ключу, чтобы после сортировки по значению, команды
-    @table = @table.sort_by { |_key, val| val }.reverse.to_h # с одинаковым количеством очков были отсортированы по алвавиту
+    @table = @table.sort_by { |_key, val| val }.reverse.to_h # с одинаковым количеством очков были отсортированы по алфавиту
     i = 0
     @table.each { |k, v| puts "#{i += 1}. #{k}, #{v} pts" }
   end

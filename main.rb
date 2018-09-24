@@ -1,4 +1,4 @@
-require_relative './class/soccer.rb'
+require_relative './class/soccer_rank.rb'
 
 if ARGV.length > 0
   rank = SoccerRank.new
