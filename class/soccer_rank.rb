@@ -7,19 +7,17 @@ class SoccerRank
   end
 
   def action(filename)
-    begin
-      if File.exist?(filename)
-        file = File.open(filename)
-        file.readlines.each { |line| @arr << line.match(RGXP).captures }
-        file.close
-        create_table
-        rank_calc
-        show_table
-      end
+    if File.exist?(filename)
+      file = File.open(filename)
+      file.readlines.each { |line| @arr << line.match(RGXP).captures }
+      file.close
+      create_table
+      rank_calc
+      show_table
+    end
     rescue
       puts 'wrong file'
       nil
-    end
   end
 
   private
